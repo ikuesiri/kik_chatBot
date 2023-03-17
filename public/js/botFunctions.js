@@ -24,5 +24,4 @@ function renderChat(Msg){
 
 function welcomeUser(Msg) {
     renderChat(Msg);
-    // chatBody.appendChild(messageTag)
   }

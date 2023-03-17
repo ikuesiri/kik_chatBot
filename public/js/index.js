@@ -1,11 +1,5 @@
 
-
-// const socket = io.connect('http://localhost:5001')
-
-send.addEventListener("click", () =>{
-    console.log("i was clicked!")
-})
-
+//Welcome Message from chatBot
 socket.on("intro_menu", (Msg) => {
   welcomeUser(Msg);
 });
