@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;1,100&display=swap" rel="stylesheet">
+<title>KIK local-dish Restaurant</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./js/botFunctions.js" defer></script>
+    <script src="./js/index.js" defer></script>
+</head>
+<body>
+     <div class="container">
+        <div class="chatBot_header">
+            <div class="logo">
+                <img src="./images/kiki_bot.png" alt="kiki_robot">
+            </div>
+            <div class="chat-title">
+                <h3>Welcome!</h3>
+            </div>
+        </div>
+        <div class="chat-body">
+        </div>
+        <div class="chat-input">
+            <div class="input-tab">
+                <input type="text" name="" placeholder="Type Here..." id="message" autofocus>
+            </div>
+            <div class="send-btn">
+                <!-- <button>
+                    <img src="./images/send.png" alt="send">
+                </button> -->
+                <input type="button" value="send" id="send">
+            </div>
+        </div>
+     </div>
+
+    <!-- <script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script> -->
+    <script src="/socket.io/socket.io.js"></script>
+
+</body>
+</html>
