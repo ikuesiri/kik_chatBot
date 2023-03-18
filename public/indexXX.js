@@ -27,7 +27,6 @@ const socket = io.connect('http://localhost:5001')
 
 // })
 
-// //event for clicking the enter keyboard button
 // message.addEventListener('keydown',(e) =>{
 //     // e.preventDefault()
 //     if(e.keyCode === 13){
@@ -45,10 +44,7 @@ const socket = io.connect('http://localhost:5001')
 
 // const displayCustomersOption = () =>{
 //     const userInput = message.value;
-//     if(userInput === ""){
-//         const message = `Welcome To Kola Nigeria restaurant`;
-//         renderValue(message);
-//     }
+
 //     if(userInput != ""){
 //         renderValue(`user: ${userInput}`, "user")
 //         socket.emit('userInput', userInput)

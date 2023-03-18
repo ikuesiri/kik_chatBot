@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
 const moment = require("moment");
 
-const ObjectId = Schema.ObjectId;
 
 const OrderSchema = new mongoose.Schema({
-  id: ObjectId,
+  id: mongoose.Schema.ObjectId,
   orderedItem: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "foodMenu",
@@ -16,7 +15,7 @@ const OrderSchema = new mongoose.Schema({
     localField: "orderedBy",
     foreignField: "customerId",
   },
-  orderedAT: {
+  createdAt : {
     type: String,
     default: () => moment().format("LLLL"),
   },

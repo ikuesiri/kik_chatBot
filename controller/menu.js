@@ -4,15 +4,15 @@ const foodMenuModel = require("../model/foodMenuSchema");
 // async function addMenuItem(req, res, next) {
     const addToCart = async (req, res) =>{
   try {
-    const item = req.body;
-    console.log(item);
+    const items = req.body;
+    console.log(items);
 
-    const addItem = await foodMenuModel.create(item);
+    const addFoodItems = await foodMenuModel.create(items);
 
     res.status(201).json({
       status: true,
-      message: "added new item successfully",
-      addItem,
+      message: "foodStore Updated!",
+      addFoodItems,
     });
   } catch (error) {
     res.status(500).send({ message : error.message })

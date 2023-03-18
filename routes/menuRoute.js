@@ -1,5 +1,5 @@
 const express = require("express");
-const  {addToCart, viewFoodCart} = require("../controller/order")
+const  {addToCart, viewFoodCart} = require("../controller/menu")
 
 const foodMenu = express.Router();
 

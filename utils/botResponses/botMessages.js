@@ -1,5 +1,8 @@
 //to format the time
 const moment = require("moment");
+const customerModel = require("../../model/userSchema");
+const FoodMenuModel = require("../../model/foodMenuSchema");
+const OrderModel = require("../../model/orderSchema");
 
 const mainMenu = () => {
    let msg = "<hr>"
@@ -27,4 +30,53 @@ const mainMenu = () => {
     }
 };
 
-module.exports = {mainMenu}
+// Food Menu Function
+const getFoodMenu = async() =>{
+  try {
+    const foodMenu = await FoodMenuModel.find();
+    if(foodMenu.length < 1){
+      return new Error("Sorry, We have closed!")
+    }
+    return foodMenu;
+    
+  } catch (error) {
+     return error.message;
+  }
+}
+
+//This Function Handles Order
+const createOrder = async(sessionId, foodId) => {
+    const customerId = sessionId;
+    const menuOption = foodId;
+    const  customer = await customerModel.findOne({customerId})
+    if(!customer){
+      return new Error("Cannot be found!")
+    }
+    const foodMenu = await FoodMenuModel.findOne({
+      id: foodId
+    });
+
+    if(!foodMenu){
+      return new Error("No menu found!")
+    }
+
+    const createNewOrder = await OrderModel.create({
+      orderedItem : foodMenu._id,
+      orderId : menuOption,
+      orderedBy : customer.customerId
+    })
+    // customer.orders = customer.orders.concat(createNewOrder.id)
+    customer.orders +=  createNewOrder.id
+    await customer.save()
+    return  createNewOrder
+}
+
+const findOrder = async(sessionId, foodId )=> {
+
+      const details= await FoodMenuModel.findOne({_id: foodId});
+
+      return details;
+
+}
+
+module.exports = {mainMenu, getFoodMenu, createOrder, findOrder}

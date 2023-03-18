@@ -1,21 +1,19 @@
 const mongoose = require("mongoose");
-// const uniqueValidator = require("mongoose-unique-validator");
 
 
 const foodMenuSchema = new mongoose.Schema({
-    id: {
+    foodId: {
       type: Number,
+      required: true
     },
     name: {
       type: String,
       required: true,
       unique: true,
     },
-    description: {
-      type: String,
-    },
     price: {
       type: String,
+      required: true
     },
   },
   {
@@ -23,22 +21,20 @@ const foodMenuSchema = new mongoose.Schema({
   }
 );
 
-// MenuSchema.plugin(uniqueValidator);
+// foodMenuSchema.pre("save", async function (next) {
+//   if (!this.isNew) {
+//     return next();
+//   }
 
-foodMenuSchema.pre("save", async function (next) {
-  if (!this.isNew) {
-    return next();
-  }
+//   const highestMenu = await this.constructor.findOne().sort("-id");
+//   if (!highestMenu) {
+//     this.id = 10;
+//   } else {
+//     this.id = highestMenu.id + 1;
+//   }
 
-  const highestMenu = await this.constructor.findOne().sort("-id");
-  if (!highestMenu) {
-    this.id = 100;
-  } else {
-    this.id = highestMenu.id + 1;
-  }
-
-  return next();
-});
+//   return next();
+// });
 const FoodMenuModel = mongoose.model("foodMenu", foodMenuSchema);
 
 module.exports = FoodMenuModel;
