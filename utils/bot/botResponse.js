@@ -5,22 +5,22 @@ const formatMessage = require("./format/formatMessage");
 const formatMenu = require("./format/formatMenu");
 
 
-exports.welcomeMessage = (io, SSID) => {
+const welcomeMessage = (io, SSID) => {
 	io.to(SSID).emit(
 		"bot message",
-		formatMessage("kik_bot", "Hello!  Customer,  I'm kiki the friendly bot <br> Kindly Enter tell me your name, So I can help with your Order")
+		formatMessage("kik_bot", "Hello! 👋 Customer,  I'm kiki the friendly bot. <br><br> Kindly Enter tell me your name, So I can help with your Order  👨‍🍳")
 	);
 };
 
-exports.mainMenu = (io, SSID) => {
-	let botOutput = formatMessage("kik_bot", formatMenu("mainMenu",mainMenu));
+const homeMenu = async (io, SSID) => {
+	let botOutput = await formatMessage("kik_bot", formatMenu("mainMenu",mainMenu));
 	io.to(SSID).emit("bot message", botOutput);
 	return botOutput;
 };
 
 
-exports.getFoodMenu = (io, SSID) => {
-	let botOutput = formatMessage(
+const getFoodMenu = async(io, SSID) => {
+	let botOutput = await formatMessage(
 		"kik_bot",
 		formatMenu("Select a number to Select your Item", foodMenu)
 	);
@@ -28,7 +28,7 @@ exports.getFoodMenu = (io, SSID) => {
 	return botOutput;
 };
 
-exports.checkOutOrder = async (io, SSID) => {
+const checkOutOrder = async (io, SSID) => {
 	const order = await OrderModel.findOne({ SSID });
 
 	let botOutput = "";
@@ -57,7 +57,7 @@ exports.checkOutOrder = async (io, SSID) => {
 };
 
 //save Order
-exports.saveOrder = async (io, SSID, number) => {
+const saveOrder = async (io, SSID, number) => {
 	const order = await OrderModel.findOne({ SSID });
 
 	let botOutput = "";
@@ -102,7 +102,7 @@ exports.saveOrder = async (io, SSID, number) => {
 };
 
 
-exports.getCurrentOrder = async (io, SSID) => {
+const getCurrentOrder = async (io, SSID) => {
 	const order = await OrderModel.findOne({ SSID });
 
 	let botOutput = "";
@@ -123,7 +123,7 @@ exports.getCurrentOrder = async (io, SSID) => {
 	return botOutput;
 };
 
-exports.cancelOrder = async (io, SSID) => {
+const cancelOrder = async (io, SSID) => {
 	const order = await OrderModel.findOne({ SSID });
 
 	let botOutput = "";
@@ -148,7 +148,7 @@ exports.cancelOrder = async (io, SSID) => {
 
 
 //get order History
-exports.getOrderHistory = async (io, SSID) => {
+const getOrderHistory = async (io, SSID) => {
 	const order = await OrderModel.findOne({ SSID });
 
 	let botOutput = "";
@@ -173,7 +173,7 @@ exports.getOrderHistory = async (io, SSID) => {
 
 
 //get SSSID
-exports.getSessionInfo = async (SSID) => {
+const getSessionInfo = async (SSID) => {
 	const checksessionID = await OrderModel.findOne({ SSID });
 
 	if (!checksessionID) {
@@ -181,7 +181,7 @@ exports.getSessionInfo = async (SSID) => {
 	}
 };
 
-exports.getMessage = async (io, SSID) => {
+const getMessage = async (io, SSID) => {
 	const oldMessages = await ChatModel.find({ SSID });
 
 	if(!oldMessages) return;
@@ -190,4 +190,10 @@ exports.getMessage = async (io, SSID) => {
 		io.to(message.SSID).emit("user message", message.userOutput);
 		io.to(message.SSID).emit("bot message", message.botOutput);
 	});
+}
+
+
+
+module.exports = {
+	welcomeMessage, homeMenu, getSessionInfo, getMessage , getFoodMenu, checkOutOrder, getOrderHistory, getCurrentOrder, cancelOrder, saveOrder
 }

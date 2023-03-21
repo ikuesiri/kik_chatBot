@@ -14,26 +14,18 @@
 					<img src="./images/kiki_bot.png" alt="kiki_robot">
 				</div>
 				<div class="chat-title">
-				  <h3>Welcome! </h3>
+				  <h3>Welcome! to Kikz Kitchen</h3>
 				</div>
 			</div>
 			<div class="chat-body">
 			</div>
-			<div class="chat-input">
-				<form id="chat-form">
-					<div class="input-tab">
-						<input 
-						type="text" 
-						placeholder="Type Here..." 
-						id="msg" autofocus autocomplete="off"
-						/>
-					</div>
-					<div class="send-btn">
-						<button>Send</button>
-					</div>
-				</form>
-				
-			</div>
+			<form id="chat-form">
+				<input type="text" 
+				id= "msg" 
+				placeholder="Type here..."
+				autofocus autocomplete="off">
+				<button type="submit">Send</button>
+			</form>
 		 </div>
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="./chatApp.js"></script>

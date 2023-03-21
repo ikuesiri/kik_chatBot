@@ -26,7 +26,7 @@ The Restaurant Ordering ChatBot has the following features:
 - Displays the menu items with their prices, and selection ID
 - Allows users to add items to their Order list.
 - Provides the option to clear their Order list
-- Enables users to place their order by selection a corresponding Number.
+- Enables users to place their order by selection a relative Number.
 
 ### Technologies Used
 The following technologies have been used to build the Restaurant Ordering ChatBot:

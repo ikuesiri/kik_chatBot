@@ -15,7 +15,7 @@ const sessionMiddleware = require("./config/sessionMiddleware");
 //Chat model
 const ChatModel = require("./model/chatModel");
 //kik_bot responses
-const {welcomeMessage, mainMenu, getSessionInfo, getMessage , getFoodMenu, checkOutOrder, getOrderHistory, getCurrentOrder, cancelOrder, saveOrder} = require("./utils/bot/botResponse");
+const {welcomeMessage, homeMenu, getSessionInfo, getMessage , getFoodMenu, checkOutOrder, getOrderHistory, getCurrentOrder, cancelOrder, saveOrder} = require("./utils/bot/botResponse");
 
 const formatMessage = require("./utils/bot/format/formatMessage");
 // parse application/json
@@ -30,8 +30,6 @@ io.engine.use(sessionMiddleware);
 //used to display static HTML files
 app.use(express.static(path.join(__dirname, "public")));
 
-
-
 	//to persist prev data/message
 	const screenDisplay = {};
 
@@ -39,12 +37,11 @@ io.on("connection", async (socket) => {
 	// get the session
 	const sessionId = socket.request.session.id; 
 	console.log(`Customer connected:${sessionId}`)
-	getSessionInfo(sessionId);
+	 await getSessionInfo(sessionId);
 	//connect users with the same session id
-	socket.join(sessionId);
-
-	welcomeMessage(io, sessionId);
-	getMessage(io, sessionId);
+	await socket.join(sessionId);
+	await welcomeMessage(io, sessionId);
+	await getMessage(io, sessionId);
 
 	//listen for user message
 	screenDisplay[sessionId] = 0;
@@ -56,7 +53,7 @@ io.on("connection", async (socket) => {
 		let botOutput = "";
 		switch (screenDisplay[sessionId]) {
 			case 0:
-				botOutput = await mainMenu(io, sessionId);
+				botOutput = await homeMenu(io, sessionId);
 				screenDisplay[sessionId] = 1;
 				break;
 			case 1:
@@ -77,7 +74,7 @@ io.on("connection", async (socket) => {
 				} else {
 					botOutput = await formatMessage(
 						"kik_bot",
-						`<p>⚠ Invalid Selection:</p><br> <hr><p>Select 0 to 'cancel' and go back to the main menu.</p><br><p>Select 1 to go back to the food menu.</p>`
+						`<p>⚠ Invalid Selection:</p><br> <hr><p>Select 0 to 'cancel' and go back to the home menu.</p><br><p>Select 1 to go back to the food menu.</p>`
 					);
 					io.to(sessionId).emit("bot message", botOutput);
 				}
@@ -87,7 +84,7 @@ io.on("connection", async (socket) => {
 				if (number <= 0 || number >= 8  ) {
 					botOutput = await formatMessage(
 						"kik_bot",
-						`<p>⚠ Invalid Selection. Please Try again:</p><br><hr><p>Select 0 to 'cancel' and go back to the main menu.</p><br><p>Select 1 to go back to the food menu.</p>`
+						`<p>⚠ Invalid Selection. Please Try again:</p><br><hr><p>Select 0 to 'cancel' and go back to the home menu.</p><br><p>Select 1 to go back to the food menu.</p>`
 					);
 					io.to(sessionId).emit("bot message", botOutput);
 					screenDisplay[sessionId] = 1;

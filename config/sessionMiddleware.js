@@ -6,10 +6,10 @@ const sessionMiddleware = session({
 	secret: CONFIG.SECRET,
 	resave: false,
 	saveUninitialized: true,
-	store: MongoStore.create({ mongoUrl: CONFIG.MONGO_DB_URI }),
 	cookie: {		
 		maxAge: 60 * 60 * 1000
 	},
+	store: MongoStore.create({ mongoUrl: CONFIG.MONGO_DB_URI }),
 });
 
 module.exports = sessionMiddleware;

@@ -10,11 +10,12 @@
 }
 
 body{
-
   background-image: url('../images/background.png');
+  background-size: cover;
+	background-repeat: no-repeat;
+	height: 50vh;
+  width: 50vw;
 }
-
-
 
 ul {
   margin: 0;
@@ -28,7 +29,7 @@ li {
 }
 .container{
   height: 624px;
-  width: 550px;
+  width: 600px;
   /* border-radius: 10px ; */
   background-color: #f4f4f4;
   box-shadow: var(--box-shadow);
@@ -45,7 +46,6 @@ li {
 }
 
 .logo img{
-  /* padding-left: 5px; */
   height: 75px;
   width: 80px;
   box-shadow: var(--box-shadow);
@@ -54,6 +54,8 @@ li {
 
 .chat-title{
   padding-left: 20px;
+  color: #ffff00;
+  font-size: 25px;
 }
 
 .chat-body{
@@ -71,60 +73,32 @@ li {
   height:50px;
   display: flex;
   align-items:center;
-
-  padding: 10px 0;
+  padding: 10px 5px;
   border-top: 1px solid #ccc;
-  width: 100%;
-  
+  width: 300px;
 }
 
-#chat-form{
-  /* display: flex;
-  justify-content: space-between;
-  align-items: center; */
-  /* flex: 9 */
+#chat-form {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-
+  margin-top: 5px;
+  padding : 0 10px;
 }
-
-#chat-form input{
-  /* flex: 9; */
+#chat-form input[type="text"] {
+  flex: 1;
   padding: 10px;
-  border: 1px solid #ccc;
   border-radius: 5px;
-  outline: none;
+  border: none;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
   margin-right: 10px;
 }
-
-button{
-  width: 100px;
+#chat-form button[type="submit"] {
+  padding: 10px 20px;
+  background-color: green;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
   cursor: pointer;
- 
-}
-
-/*  */
-/* .input-tab{
-  flex: 9;
-  padding-left: 10px;
-} */
-
-/* .send-btn{
-  flex: 1;
-  padding-left: 15px;
-  width: 40px;
-
-} */
-#message{
-  line-height: 30px;
-  padding: 6px 10px;
-  outline: none;
-  border : none;
-  font-size: 16px;
-  background-color: rgb(211, 211, 211);
-  /* width: 100%; */
 }
 
 /* from javaScript */
@@ -133,22 +107,19 @@ button{
 span {
   float: right;
 }
-
 .user-response, .chatBot-response{
   font-style:  italic;
   font-weight: 500;
-  background-color: rgb(60, 70, 167);
+  background-color: rgb(25, 26, 121);
   color: #f4f4f4;
   margin-top: 8px;
   padding: 0 8px;
   border-radius:  10px 0 10px 10px;
   font-size: 16px;
   max-width: 60%;
-
 }
 
 .chatBot-response{
-  /* font-weight: 400; */
   background-color: rgb(8, 9, 17);
   border-radius:  0px 10px  10pX;
   align-self: flex-start;
