@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const connectDB = (url) => {
   return mongoose.connect(url, {
@@ -7,4 +7,4 @@ const connectDB = (url) => {
   })
 }
 
-module.exports = connectDB
+module.exports = connectDB;
