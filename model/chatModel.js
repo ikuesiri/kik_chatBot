@@ -12,7 +12,10 @@ const chatSchema = new mongoose.Schema(
 			time: String,
 		},
 		botOutput: {
-			name: String,
+			name: {
+				type:String,
+				default: "kik_bot"
+			},
 			text: String,
 			time: String
 		},

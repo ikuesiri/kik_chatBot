@@ -31,7 +31,7 @@ The Restaurant Ordering ChatBot has the following features:
 ### Technologies Used
 The following technologies have been used to build the Restaurant Ordering ChatBot:
 
--FRONTEND
+- FRONTEND
     - HTML
     - CSS
     - JavaScript
