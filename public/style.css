@@ -32,10 +32,12 @@ li {
   width: 70%;
   background-color: #f4f4f4;
   box-shadow: var(--box-shadow);
+  border-radius: 5px;
   position: fixed;
   bottom: 30px ;
   right: 10px;
 }
+
 
 .chatBot_header{
   background: green;
@@ -125,4 +127,14 @@ span {
   border-radius:  0px 10px  10pX;
   align-self: flex-start;
   padding-left: 20px;
+}
+
+
+
+/* tab and mobile view */
+@media screen and (max-width: 991px)  {
+  .container{
+    max-width: 99%;
+    border-radius: 0;
+  }  
 }
