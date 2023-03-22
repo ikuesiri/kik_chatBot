@@ -13,7 +13,7 @@ store.on("error", function (error) {
 
 const sessionMiddleware = session({
 	secret: CONFIG.SECRET,
-	resave: true,
+	resave: false,
 	saveUninitialized: true,
 	store,
 	cookie: {		

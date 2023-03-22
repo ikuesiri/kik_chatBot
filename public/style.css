@@ -34,7 +34,7 @@ li {
   box-shadow: var(--box-shadow);
   border-radius: 5px;
   position: fixed;
-  bottom: 30px ;
+  bottom: 15px ;
   right: 10px;
 }
 
