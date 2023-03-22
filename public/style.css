@@ -16,17 +16,7 @@ body{
 	height: 100vh;
 }
 
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-li {
-  margin: 10px 0;
-  font-size: 1.2em;
-}
-.container{
+.containers{
   height: 95vh;
   max-width: 600px;
   width: 70%;
@@ -38,6 +28,16 @@ li {
   right: 10px;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  margin: 10px 0;
+  font-size: 1.2em;
+}
 
 .chatBot_header{
   background: green;
@@ -136,6 +136,7 @@ span {
   .container{
     max-width: 99%;
     width: 99%;
+    bottom: 3px;
     border-radius: 0;
   }
   .user-response, .chatBot-response{
@@ -149,6 +150,7 @@ span {
   .container{
     max-width: 99%;
     width: 99%;
+    bottom: 5px;
     border-radius: 0;
   }
   .user-response, .chatBot-response{
