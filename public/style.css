@@ -29,7 +29,7 @@ li {
 .container{
   height: 95vh;
   max-width: 600px;
-  max-width: 70%;
+  width: 70%;
   background-color: #f4f4f4;
   box-shadow: var(--box-shadow);
   position: fixed;
@@ -52,6 +52,7 @@ li {
 }
 
 .chat-title{
+  font-style: italic;
   padding: 0 20px;
   color: #ffff00;
   font-size: 20px;
