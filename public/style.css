@@ -131,8 +131,21 @@ span {
 
 
 
-/* tab and mobile view */
-@media screen and (max-width: 991px)  {
+/* mobile view */
+@media screen and (max-width: 480px)  {
+  .container{
+    max-width: 99%;
+    width: 99%;
+    border-radius: 0;
+  }
+  .user-response, .chatBot-response{
+    max-width: 80%;
+    width: 75%;
+  }
+}
+
+/* tablet view */
+@media screen and (max-width: 768px)  {
   .container{
     max-width: 99%;
     width: 99%;
